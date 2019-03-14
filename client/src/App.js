@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 class App extends Component {
   render() {
     return (
-      <div>
-        
+      <div className="App">
+        <h1>MERN SHOPPING LIST</h1>
       </div>
     );
   }

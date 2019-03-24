@@ -9,19 +9,19 @@ export const getItems = () => dispatch => {
     }))
 }
 
+
+export const addItem = (item) => dispatch => {
+    axios.post('/api/items', item).then(res => dispatch ({
+        type: ADD_ITEM,
+        payload: res.data //item that was newly added
+    }))
+}
+
 export const deleteItem = (id) => {
     return {
         // this action type below goes to itemReducer
         type: DELETE_ITEM,
         payload: id //sending id to the reducer, ie what to delete
-    };
-}
-
-export const addItem = (item) => {
-    return {
-        // this action type below goes to itemReducer
-        type: ADD_ITEM,
-        payload: item 
     };
 }
 

@@ -6,3 +6,11 @@ export const getItems = () => {
         type: GET_ITEMS
     };
 }
+
+export const deleteItem = (id) => {
+    return {
+        // this action type below goes to itemReducer
+        type: DELETE_ITEM,
+        payload: id //sending id to the reducer, ie what to delete
+    };
+}

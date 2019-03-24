@@ -1,10 +1,12 @@
+import axios from 'axios';
 import {GET_ITEMS, ADD_ITEM, DELETE_ITEM, ITEMS_LOADING} from './types';
 
-export const getItems = () => {
-    return {
-        // this action type below goes to itemReducer
-        type: GET_ITEMS
-    };
+export const getItems = () => dispatch => {
+    dispatch(setItemsLoading());
+    axios.get('/api/items').then(res => dispatch({
+        type: GET_ITEMS,
+        payload: res.data // data that comes from the backend
+    }))
 }
 
 export const deleteItem = (id) => {

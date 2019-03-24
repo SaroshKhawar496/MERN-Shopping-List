@@ -19,7 +19,8 @@ export default function(state = initialState, action) {
         case DELETE_ITEM:
          return {
              ...state,
-             items: state.items.filter(item => item.id !== action.payload)
+            //  using _id as item coming from mongoose.
+             items: state.items.filter(item => item._id !== action.payload)
          };   
 
          case ADD_ITEM:

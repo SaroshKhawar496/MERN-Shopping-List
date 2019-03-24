@@ -17,12 +17,11 @@ export const addItem = (item) => dispatch => {
     }))
 }
 
-export const deleteItem = (id) => {
-    return {
-        // this action type below goes to itemReducer
+export const deleteItem = (id) => dispatch => {
+    axios.delete(`/api/items/${id}`).then(res => dispatch({
         type: DELETE_ITEM,
-        payload: id //sending id to the reducer, ie what to delete
-    };
+        payload: id
+    }))
 }
 
 export const setItemsLoading = () => {

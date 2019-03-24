@@ -33,16 +33,16 @@ class ShoppingList extends Component {
                 <ListGroup>
 
                     <TransitionGroup className="shopping-list">
-
-                        {items.map( ({id, name}) => (
+                        {/* using _id, becoz items coming from mongodb */}
+                        {items.map( ({_id, name}) => (
                             
-                            <CSSTransition key={id} timeout={500} classNames="fade">
+                            <CSSTransition key={_id} timeout={500} classNames="fade">
                                 <ListGroupItem>
                                     <Button 
                                      className="remove-btn"
                                      color="danger"
                                      size="sm"
-                                     onClick={this.onDeleteClick.bind(this, id)}                                    
+                                     onClick={this.onDeleteClick.bind(this, _id)}                                    
                                     >
                                     {/* cross button  */}
                                        &times; 

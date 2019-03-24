@@ -14,3 +14,11 @@ export const deleteItem = (id) => {
         payload: id //sending id to the reducer, ie what to delete
     };
 }
+
+export const addItem = (item) => {
+    return {
+        // this action type below goes to itemReducer
+        type: ADD_ITEM,
+        payload: item 
+    };
+}

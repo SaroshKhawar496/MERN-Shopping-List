@@ -8,7 +8,7 @@ import {
     REGISTER_SUCCESS,
     REGISTER_FAIL   
 } from '../actions/types';
-import { stat } from 'fs';
+
 
 const initialState = {
     token: localStorage.getItem('token'),
@@ -32,6 +32,7 @@ export default function(state = initialState, action){
             };
         case LOGIN_SUCCESS:
         case REGISTER_SUCCESS: 
+            localStorage.setItem('token', action.payload.token);
             return{
                 ...state,
                 ...action.payload,

@@ -4,6 +4,7 @@ const router = express.Router();
 const bcrypt = require('bcryptjs');
 const config = require("config");
 const jwt = require("jsonwebtoken");
+const auth = require('../../middleware/auth');
 
 // User Model
 const User = require('../../models/User');
@@ -57,5 +58,14 @@ router.post('/', (req, res)=> {
     })
 });
 
+// the route below sends back the user info when provided with the jwt in req header
+// @route   GET api/auth/user
+// @desc    Get user data
+// @access  Private 
+router.get('/user', auth, (req,res)=> {
+    User.findById(req.user.id) //req.user is coming from auth middleware
+    .select("-password") //not sending the password to response
+    .then(user => res.json(user));
+})
 
 module.exports = router;

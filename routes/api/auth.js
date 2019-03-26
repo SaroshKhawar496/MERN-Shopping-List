@@ -36,7 +36,7 @@ router.post('/', (req, res)=> {
             jwt.sign(
                 //payload
                 {id: user.id},
-                config.get("jwtSecret"),
+                process.env.jwtSecret,
                 {expiresIn: 3600}, //3600s = 1 hour
                 (err, token)=> {
                     if(err) throw err;
